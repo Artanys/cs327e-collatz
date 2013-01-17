@@ -31,6 +31,7 @@ def collatz_read (r, a) :
 # collatz_eval
 # ------------
 
+cache = dict()
 def collatz_eval (i, j) :
     """
     i is the beginning of the range, inclusive
@@ -46,13 +47,20 @@ def collatz_eval (i, j) :
         i = j
         j = temp
     for x in range ( i, j ):
+        cacheList = []
         tempV = 1
         while x > 1:
+            if x in cache:
+                tempV += cache [ x ]
+                break
+            cacheList.append ( x )
             if x % 2 == 0:
                 x = x / 2
             else:
                 x = 3 * x + 1
             tempV += 1
+        for y in range ( 0, len ( cacheList ) ):
+            cache [ cacheList [ y ] ] = tempV - y - 1
         if tempV > v:
             v = tempV
     assert v > 0
