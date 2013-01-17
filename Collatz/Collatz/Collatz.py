@@ -31,7 +31,6 @@ def collatz_read (r, a) :
 # collatz_eval
 # ------------
 
-cache = dict()
 def collatz_eval (i, j) :
     """
     i is the beginning of the range, inclusive
@@ -42,6 +41,20 @@ def collatz_eval (i, j) :
     assert j > 0
     # <your code>
     v = 1
+    if j < i:
+        temp = i
+        i = j
+        j = temp
+    for x in range ( i, j ):
+        tempV = 1
+        while x > 1:
+            if x % 2 == 0:
+                x = x / 2
+            else:
+                x = 3 * x + 1
+            tempV += 1
+        if tempV > v:
+            v = tempV
     assert v > 0
     return v
 
