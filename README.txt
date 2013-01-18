@@ -2,7 +2,7 @@ Project #1: Collatz
 Date: Wed, 30 Jan 2013, 8pm
 
 Course Name: CS327e
-Unique: 
+Unique: 53355
 
 First Name: Jordan
 Last Name: Naumann
