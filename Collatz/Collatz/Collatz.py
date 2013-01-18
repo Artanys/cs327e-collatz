@@ -18,7 +18,7 @@ def collatz_read (r, a) :
     return true if that succeeds, false otherwise
     """
     s = r.readline()
-    if s == "" :
+    if s == "" or s == "\n" :
         return False
     l = s.split()
     a[0] = int(l[0])
