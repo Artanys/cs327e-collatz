@@ -6,6 +6,8 @@
 # Glenn P. Downing
 # ---------------------------
 
+import sys
+
 # ------------
 # collatz_read
 # ------------
@@ -94,3 +96,5 @@ def collatz_solve (r, w) :
     while collatz_read(r, a) :
         v = collatz_eval(a[0], a[1])
         collatz_print(w, a[0], a[1], v)
+
+collatz_solve(sys.stdin, sys.stdout)
