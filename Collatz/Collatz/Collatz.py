@@ -101,8 +101,4 @@ def collatz_solve (r, w) :
     while collatz_read(r, a) :
         v = collatz_eval(a[0], a[1])
         collatz_print(w, a[0], a[1], v)
-<<<<<<< HEAD
-=======
 
-collatz_solve(sys.stdin, sys.stdout)
->>>>>>> f10c9a5094d05204802a06280b044b2c6be545f5
