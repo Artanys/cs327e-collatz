@@ -6,6 +6,8 @@
 # Glenn P. Downing
 # ---------------------------
 
+import sys
+
 # ------------
 # collatz_read
 # ------------
@@ -49,18 +51,23 @@ def collatz_eval (i, j) :
     for x in range ( i, j ):
         cacheList = []
         tempV = 1
+        newKeys = 0
         while x > 1:
             if x in cache:
                 tempV += cache [ x ]
                 break
             cacheList.append ( x )
+            if newKeys == 0:
+                newKeys = 1
             if x % 2 == 0:
                 x = x / 2
             else:
                 x = 3 * x + 1
             tempV += 1
-        for y in range ( 0, len ( cacheList ) ):
-            cache [ cacheList [ y ] ] = tempV - y - 1
+        if newKeys == 1:
+            length = len ( cacheList )
+            for y in range ( 0, length ):
+                cache [ cacheList [ y ] ] = tempV - y - 1
         if tempV > v:
             v = tempV
     assert v > 0
