@@ -9,13 +9,13 @@ Last Name: Naumann
 EID: jtn395
 E-mail: jordan.naumann@gmail.com
 Estimated number of hours: 3
-Actual    number of hours:
+Actual    number of hours: 10
 
 Turnin CS Username: jtn395
 GitHub ID: Artanys
 GitHub Repository Name: cs327e-collatz
 
-Comments:
+Comments: Program itself did not take very long at all to write. Most of my time was spent figuring out Github and trying to get my UTCS accound activated on the linux machines. I used Visual Studio 2012 and their Python add-in to write my code, as well as conduct profiling during execution. Fastest time was 2.36 on Sphere, which was strangely before the added performance improvements. Perhaps my improvements, which added .06 seconds to the time, are only noticed when the inputs to the program overlap (e.g. "1000 10000\n5000 10000\n").
 
 ---------------
 Code of Conduct
