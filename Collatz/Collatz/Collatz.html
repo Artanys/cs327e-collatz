@@ -8,7 +8,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Collatz</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/v/filer4b/v35q001/jtn395/327e/collatz/Collatz.py">/v/filer4b/v35q001/jtn395/327e/collatz/Collatz.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:///C:/users/jordan/documents/notes/github/cs327e-collatz/collatz/collatz/collatz.py">c:\users\jordan\documents\notes\github\cs327e-collatz\collatz\collatz\collatz.py</a></font></td></tr></table>
     <p><tt>#&nbsp;---------------------------<br>
 #&nbsp;projects/collatz/Collatz.py<br>
 #&nbsp;Copyright&nbsp;(C)&nbsp;2013<br>
@@ -29,7 +29,14 @@
 <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-collatz_eval"><strong>collatz_eval</strong></a>(i, j)</dt><dd><tt>i&nbsp;is&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
+<td width="100%"><dl><dt><a name="-collatz_checkMeta"><strong>collatz_checkMeta</strong></a>(a, b, c)</dt><dd><tt>checks&nbsp;the&nbsp;meta&nbsp;cache&nbsp;for&nbsp;max&nbsp;cycle&nbsp;lengths&nbsp;between&nbsp;a[0]&nbsp;and&nbsp;a[1]<br>
+if&nbsp;a&nbsp;value&nbsp;from&nbsp;the&nbsp;meta&nbsp;cache&nbsp;is&nbsp;available,&nbsp;then&nbsp;b[0]&nbsp;and&nbsp;b[1]&nbsp;become&nbsp;the&nbsp;range&nbsp;before&nbsp;the&nbsp;meta&nbsp;cache&nbsp;key,<br>
+and&nbsp;c[0]&nbsp;and&nbsp;c[1]&nbsp;become&nbsp;the&nbsp;range&nbsp;after&nbsp;the&nbsp;meta&nbsp;cache&nbsp;key<br>
+a&nbsp;is&nbsp;an&nbsp;array&nbsp;of&nbsp;int<br>
+b&nbsp;is&nbsp;an&nbsp;array&nbsp;of&nbsp;int<br>
+c&nbsp;is&nbsp;an&nbsp;array&nbsp;of&nbsp;int<br>
+return&nbsp;the&nbsp;max&nbsp;cycle&nbsp;length&nbsp;from&nbsp;the&nbsp;meta&nbsp;cache,&nbsp;if&nbsp;applicable</tt></dd></dl>
+ <dl><dt><a name="-collatz_eval"><strong>collatz_eval</strong></a>(i, j)</dt><dd><tt>i&nbsp;is&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
 j&nbsp;is&nbsp;the&nbsp;end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
 return&nbsp;the&nbsp;max&nbsp;cycle&nbsp;length&nbsp;in&nbsp;the&nbsp;range&nbsp;[i,&nbsp;j]</tt></dd></dl>
  <dl><dt><a name="-collatz_print"><strong>collatz_print</strong></a>(w, i, j, v)</dt><dd><tt>prints&nbsp;the&nbsp;values&nbsp;of&nbsp;i,&nbsp;j,&nbsp;and&nbsp;v<br>
@@ -51,5 +58,6 @@ w&nbsp;is&nbsp;a&nbsp;writer</tt></dd></dl>
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>cache</strong> = {}</td></tr></table>
+<td width="100%"><strong>cache</strong> = {}<br>
+<strong>mcache</strong> = [119, 128, 144, 142, 137, 171, 179, 174, 169, 182, 177, 172, 167, 180, 175, 175, 170, 183, 183, 209, ...]</td></tr></table>
 </body></html>
