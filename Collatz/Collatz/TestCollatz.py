@@ -100,48 +100,68 @@ class TestCollatz (unittest.TestCase) :
     # -----
 
     def test_checkMeta_1 (self) :
-        a = [1, 125, 1, 1]
-        v = collatz_checkMeta(a)
+        a = [1, 125]
+        b = [1, 1]
+        c = [1, 1]
+        v = collatz_checkMeta(a,b,c)
         self.assert_(a[0] == 1)
-        self.assert_(a[1] == 1)
-        self.assert_(a[2] == 1)
-        self.assert_(a[3] == 1)
+        self.assert_(a[1] == 125)
+        self.assert_(b[0] == 1)
+        self.assert_(b[1] == 1)
+        self.assert_(c[0] == 1)
+        self.assert_(c[1] == 1)
         self.assert_(v == 119)
         
     def test_checkMeta_2 (self) :
-        a = [1, 126, 1, 1]
-        v = collatz_checkMeta(a)
+        a = [1, 126]
+        b = [1, 1]
+        c = [1, 1]
+        v = collatz_checkMeta(a,b,c)
         self.assert_(a[0] == 1)
-        self.assert_(a[1] == 1)
-        self.assert_(a[2] == 126)
-        self.assert_(a[3] == 126)
+        self.assert_(a[1] == 126)
+        self.assert_(b[0] == 1)
+        self.assert_(b[1] == 1)
+        self.assert_(c[0] == 126)
+        self.assert_(c[1] == 126)
         self.assert_(v == 119)
 
     def test_checkMeta_3 (self) :
-        a = [125, 250, 1, 1]
-        v = collatz_checkMeta(a)
+        a = [125, 250]
+        b = [1, 1]
+        c = [1, 1]
+        v = collatz_checkMeta(a,b,c)
         self.assert_(a[0] == 125)
-        self.assert_(a[1] == 125)
-        self.assert_(a[2] == 1)
-        self.assert_(a[3] == 1)
+        self.assert_(a[1] == 250)
+        self.assert_(b[0] == 125)
+        self.assert_(b[1] == 125)
+        self.assert_(c[0] == 1)
+        self.assert_(c[1] == 1)
         self.assert_(v == 128)
         
     def test_checkMeta_4 (self) :
-        a = [1, 250, 1, 1]
-        v = collatz_checkMeta(a)
+        a = [1, 250]
+        b = [1, 1]
+        c = [1, 1]
+        v = collatz_checkMeta(a,b,c)
         self.assert_(a[0] == 1)
-        self.assert_(a[1] == 1)
-        self.assert_(a[2] == 1)
-        self.assert_(a[3] == 1)
+        self.assert_(a[1] == 250)
+        self.assert_(b[0] == 1)
+        self.assert_(b[1] == 1)
+        self.assert_(c[0] == 1)
+        self.assert_(c[1] == 1)
         self.assert_(v == 128)
 
     def test_checkMeta_5 (self) :
-        a = [120, 380, 1, 1]
-        v = collatz_checkMeta(a)
+        a = [120, 380]
+        b = [1, 1]
+        c = [1, 1]
+        v = collatz_checkMeta(a,b,c)
         self.assert_(a[0] == 120)
-        self.assert_(a[1] == 125)
-        self.assert_(a[2] == 376)
-        self.assert_(a[3] == 380)
+        self.assert_(a[1] == 380)
+        self.assert_(b[0] == 120)
+        self.assert_(b[1] == 125)
+        self.assert_(c[0] == 376)
+        self.assert_(c[1] == 380)
         self.assert_(v == 144)
 
     # -----
@@ -176,24 +196,28 @@ class TestCollatz (unittest.TestCase) :
         r = StringIO.StringIO("1 10\n100 200\n201 210\n900 1000\n")
         w = StringIO.StringIO()
         collatz_solve(r, w)
+        x = w.getvalue()
         self.assert_(w.getvalue() == "1 10 20\n100 200 125\n201 210 89\n900 1000 174\n")
 
     def test_solve_2 (self) :
         r = StringIO.StringIO("10 1\n200 100\n210 201\n1000 900\n")
         w = StringIO.StringIO()
         collatz_solve(r, w)
+        x = w.getvalue()
         self.assert_(w.getvalue() == "10 1 20\n200 100 125\n210 201 89\n1000 900 174\n")
 
     def test_solve_3 (self) :
         r = StringIO.StringIO("900 1000\n9000 10000\n90000 100000\n900000 1000000\n")
         w = StringIO.StringIO()
         collatz_solve(r, w)
+        x = w.getvalue()
         self.assert_(w.getvalue() == "900 1000 174\n9000 10000 260\n90000 100000 333\n900000 1000000 507\n")
 
     def test_solve_4 (self) :
         r = StringIO.StringIO("1000 900\n10000 9000\n100000 90000\n1000000 900000\n")
         w = StringIO.StringIO()
         collatz_solve(r, w)
+        x = w.getvalue()
         self.assert_(w.getvalue() == "1000 900 174\n10000 9000 260\n100000 90000 333\n1000000 900000 507\n")
 
 # ----

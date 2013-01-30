@@ -80,33 +80,36 @@ def collatz_eval (i, j) :
 # collatz_checkMeta
 # -------------
 
-def collatz_checkMeta (a) :
+def collatz_checkMeta (a, b, c) :
     """
     checks the meta cache for max cycle lengths between a[0] and a[1]
-    if a value from the meta cache is available, then a[0] and a[1] become the range before the meta cache key,
-    and a[2] and a[3] become the range after the meta cache key
+    if a value from the meta cache is available, then b[0] and b[1] become the range before the meta cache key,
+    and c[0] and c[1] become the range after the meta cache key
     a is an array of int
+    b is an array of int
+    c is an array of int
     return the max cycle length from the meta cache, if applicable
     """
     v = 1
-    if a [ 1 ] < a [ 0 ]:
-        temp = a [ 0 ]
-        a [ 0 ] = a [ 1 ]
-        a [ 1 ] = temp
-    origI = a [ 0 ]
-    origJ = a [ 1 ]
-    mcindexJ = int ( origJ / 125 )
+    i = a [ 0 ]
+    j = a [ 1 ]
+    if j < i:
+        temp = i
+        i = j
+        j = temp
+    mcindexJ = int ( j / 125 )
     mckeyJ = mcindexJ * 125
-    if ( ( mckeyJ - origI ) >= 124 ):
-        mcindexI = mcindexJ - int ( ( mckeyJ - origI + 1 ) / 125 )
+    if ( ( mckeyJ - i ) >= 124 ):
+        mcindexI = mcindexJ - int ( ( mckeyJ - i + 1 ) / 125 )
         v = mcache [ mcindexI ]
-        for i in range ( mcindexI + 1, mcindexJ ):
-            if ( mcache [ i ] > v ):
-                v = mcache [ i ]
-        a [ 1 ] = max ( mcindexI * 125, a [ 0 ] )
-        if ( origJ > mckeyJ ):
-            a [ 2 ] = mckeyJ + 1
-            a [ 3 ] = origJ
+        for x in range ( mcindexI + 1, mcindexJ ):
+            if ( mcache [ x ] > v ):
+                v = mcache [ x ]
+        b [ 0 ] = i
+        b [ 1 ] = max ( mcindexI * 125, i )
+        if ( j > mckeyJ ):
+            c [ 0 ] = mckeyJ + 1
+            c [ 1 ] = j
     assert v > 0
     return v
 
@@ -135,7 +138,15 @@ def collatz_solve (r, w) :
     w is a writer
     """
     a = [0, 0]
+    b = [1, 1]
+    c = [1, 1]
     while collatz_read(r, a) :
-        v = collatz_eval(a[0], a[1])
+        v1 = 1
+        metav = collatz_checkMeta(a,b,c)
+        if ( metav == 1 ):
+            v1 = collatz_eval(a[0], a[1])
+        v2 = collatz_eval(b[0], b[1])
+        v3 = collatz_eval(c[0], c[1])
+        v = max (metav, v1, v2, v3)
         collatz_print(w, a[0], a[1], v)
 
