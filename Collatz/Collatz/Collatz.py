@@ -51,7 +51,7 @@ def collatz_eval (i, j) :
         temp = i
         i = j
         j = temp
-    for x in range ( i, j ):
+    for x in range ( i, j + 1 ):
         cacheList = []
         tempV = 1
         newKeys = 0

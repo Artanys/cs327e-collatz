@@ -51,7 +51,7 @@ def collatz_eval (i, j) :
         temp = i
         i = j
         j = temp
-    for x in range ( i, j ):
+    for x in range ( i, j + 1 ):
         cacheList = []
         tempV = 1
         newKeys = 0
@@ -141,7 +141,6 @@ def collatz_solve (r, w) :
     b = [1, 1]
     c = [1, 1]
     while collatz_read(r, a) :
-        
         v1 = 1
         metav = collatz_checkMeta(a,b,c)
         if ( metav == 1 ):
@@ -149,8 +148,6 @@ def collatz_solve (r, w) :
         v2 = collatz_eval(b[0], b[1])
         v3 = collatz_eval(c[0], c[1])
         v = max (metav, v1, v2, v3)
-        
-        #v = collatz_eval(a[0], a[1])
         collatz_print(w, a[0], a[1], v)
 
 collatz_solve(sys.stdin, sys.stdout)
